@@ -1,29 +1,50 @@
 {
   "name": "remind-me",
   "displayName": "吃饭饭",
-  "description": "Remind you to do something, eat or get off work, etc.",
+  "description": "Remind you to do something, lunch or get off work, etc.",
   "version": "0.0.1",
   "publisher": "shehuiwang",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.25.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kelrvins/remind-me"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "*" 
+    "onCommand:extension.remindMe"
   ],
   "main": "./extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.sayCityAqi",
-        "title": "rdme"
+        "command": "extension.remindMe",
+        "title": "remind me"
       }
     ],
+    "configuration": {
+      "type": "object",
+      "title": "remind me configuration",
+      "properties": {
+        "remind-me.defaultCity": {
+          "type": "string",
+          "default": "南京",
+          "description": "Set default city (eg.nanjing or 南京)"
+        },
+        "remind-me.hefengAppkey": {
+          "type": "string",
+          "default": "",
+          "description": "You can get your private key from here: https://wx.jdcloud.com/market/datas/26/10610"
+        }
+      }
+    },
     "keybindings": [
       {
-        "command": "extension.sayCityAqi",
+        "command": "extension.remindMe",
         "key": "ctrl+shift+,",
         "mac": "ctrl+shift+,"
       }
@@ -33,10 +54,12 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "node ./node_modules/vscode/bin/test"
   },
+  "dependencies": {
+    "web-request": "^1.0.7"
+  },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
-    "axios": "^0.18.0",
     "eslint": "^4.11.0",
     "typescript": "^2.6.1",
     "vscode": "^1.1.6"
