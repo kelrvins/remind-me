@@ -2,9 +2,10 @@
   "name": "remind-me",
   "displayName": "吃饭饭",
   "description": "Remind you to do something, lunch or get off work, etc.",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "publisher": "shehuiwang",
   "license": "MIT",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.25.0"
   },
@@ -15,8 +16,13 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+      "remind",
+      "get off work",
+      "lunch"
+  ],
   "activationEvents": [
-    "onCommand:extension.remindMe"
+    "*"
   ],
   "main": "./extension",
   "contributes": {
@@ -39,6 +45,16 @@
           "type": "string",
           "default": "",
           "description": "You can get your private key from here: https://wx.jdcloud.com/market/datas/26/10610"
+        },
+        "remind-me.lunchTime": {
+          "type": "string",
+          "default": "11:30",
+          "description": "set lunch times"
+        },
+        "remind-me.getOffTime": {
+          "type": "string",
+          "default": "18:00",
+          "description": "set get off work time times"
         }
       }
     },
