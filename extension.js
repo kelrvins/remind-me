@@ -82,17 +82,15 @@ function getWeatherInfo(cityName,operation=-1) {
     }
     const tmpLine = renderTmpLine(weatherData.hourly_forecast)
     vscode.window.showInformationMessage(`未来十二小时温度曲线 ：${tmpLine}`)
-    const isRain =
-      weatherData.hourly_forecast[0].cond.code >= 300 &&
-      weatherData.hourly_forecast[0].cond.code < 500
-    vscode.window.showInformationMessage(
-      `${weatherData.basic.city}, ${weatherData.now.cond.txt}, ${
-        weatherData.now.tmp
-      }°C, 未来两小时${weatherData.hourly_forecast[0].cond.txt}${
-        isRain ? ' ,请携带雨具' : ''
-      }`,
-      ...[isRain ? ' 哦哦' : '']
-    )
+    // const isRain =
+    //   weatherData.hourly_forecast[0].cond.code >= 300 &&
+    //   weatherData.hourly_forecast[0].cond.code < 500
+    if( weatherData.hourly_forecast[0].cond.code >= 300 &&
+      weatherData.hourly_forecast[0].cond.code < 500){
+        vscode.window.showInformationMessage(`${weatherData.basic.city}, ${weatherData.now.cond.txt}, ${weatherData.now.tmp}°C, 未来两小时${weatherData.hourly_forecast[0].cond.txt},请携带雨具`,'哦哦')
+    }else{
+      vscode.window.showInformationMessage(`${weatherData.basic.city}, ${weatherData.now.cond.txt}, ${weatherData.now.tmp}°C, 未来两小时${weatherData.hourly_forecast[0].cond.txt}`)
+    }
     if(operation==1){
       vscode.window.showInformationMessage(`吃饭啦`)
     }

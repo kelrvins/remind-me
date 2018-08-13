@@ -2,8 +2,8 @@
   "name": "remind-me",
   "displayName": "吃饭饭",
   "description": "Remind you to do something, lunch or get off work, etc.",
-  "version": "1.0.1",
-  "publisher": "shehuiwang",
+  "version": "1.0.2",
+  "publisher": "kelrvins",
   "license": "MIT",
   "icon": "icon.png",
   "engines": {
